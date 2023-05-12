@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using static UnityEngine.GraphicsBuffer;
 
 namespace Amatorii_Controller {
     /// <summary>
@@ -23,7 +24,8 @@ namespace Amatorii_Controller {
         public bool Grounded => _colDown;
 
         private Vector3 _lastPosition;
-        private float _currentHorizontalSpeed, _currentVerticalSpeed;
+        public float _currentHorizontalSpeed { get; private set; }
+        public float _currentVerticalSpeed { get; private set; }
 
         // This is horrible, but for some reason colliders are not fully established when update starts...
         private bool _active;
@@ -58,15 +60,6 @@ namespace Amatorii_Controller {
             };
             if (Input.JumpDown) {
                 _lastJumpPressed = Time.time;
-            }
-            switch (Input.X)
-            {
-                case -1:
-                    RotatePlayer(-1);
-                    break;
-                case 1:
-                    RotatePlayer(1);
-                    break;
             }
         }
 
@@ -308,26 +301,6 @@ namespace Amatorii_Controller {
             }
         }
 
-        #endregion
-
-        #region RotatePlayer
-        private void RotatePlayer(int i)
-        {
-            if(transform.rotation.y != 180 && i < 0)
-            {
-                float y = 0;
-                y += Time.deltaTime * i;
-                transform.Rotate(0.0f, y, 0.0f, Space.Self);
-                Mathf.Clamp(transform.rotation.y, 0f, 180f);
-            }
-            else if (transform.rotation.y != 0 && i > 0)
-            {
-                float y = 0;
-                y += Time.deltaTime * i;
-                transform.Rotate(0.0f, y, 0.0f, Space.Self);
-                Mathf.Clamp(transform.rotation.y, 0f, 180f);
-            }
-        }
         #endregion
     }
 }
