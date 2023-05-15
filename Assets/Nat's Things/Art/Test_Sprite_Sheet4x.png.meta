@@ -165,18 +165,128 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: Test_Sprite_Sheet4x_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 905
+        width: 1200
+        height: 450
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b2524cd25dce39842aa15681b289cea0
+      internalID: -51582597
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Test_Sprite_Sheet4x_1
+      rect:
+        serializedVersion: 2
+        x: 1200
+        y: 905
+        width: 1200
+        height: 450
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7b26f250e12347445831652bfb8fb6d4
+      internalID: 659545723
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Test_Sprite_Sheet4x_2
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 455
+        width: 1200
+        height: 450
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0e6757b5e82ace741a6223aa818b8f43
+      internalID: -1428028973
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Test_Sprite_Sheet4x_3
+      rect:
+        serializedVersion: 2
+        x: 1200
+        y: 455
+        width: 1200
+        height: 450
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e9bc306c4eb593747bea7c4fd3fb0313
+      internalID: -889114668
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Test_Sprite_Sheet4x_4
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 5
+        width: 1200
+        height: 450
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 52c067755e2999146aea757afe4d3989
+      internalID: -83459067
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: b3e2d7e14469f674ba02cdf243c17b4c
     internalID: 0
     vertices: []
     indices: 
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Test_Sprite_Sheet4x_0: -51582597
+      Test_Sprite_Sheet4x_1: 659545723
+      Test_Sprite_Sheet4x_2: -1428028973
+      Test_Sprite_Sheet4x_3: -889114668
+      Test_Sprite_Sheet4x_4: -83459067
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
