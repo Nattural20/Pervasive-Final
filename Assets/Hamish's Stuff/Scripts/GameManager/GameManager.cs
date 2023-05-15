@@ -118,7 +118,7 @@ public class GameManager : MonoBehaviour
     #region BackgroundImage
     [Header("---Background Manipulation---")]
     [SerializeField] private GameObject _BackGround;
-    private Vector3 _bgImageOffset = new Vector3(-20f, -10f, -10f);
+    private Vector3 _bgImageOffset = new Vector3(-40f, -25f, -10f);
     private float _BGsmoothTime = 0.25f;
     private Vector3 _BGvelocity = Vector3.zero;
 
