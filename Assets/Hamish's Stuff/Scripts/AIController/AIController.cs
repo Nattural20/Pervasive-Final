@@ -8,9 +8,8 @@ public class AIController : MonoBehaviour
 
     private Vector3 _velocity = Vector3.zero;
     private float _smoothTime = 0.25f;
-    private float _tetherDistance;
 
-    AIEmotions currentEmotion;
+    [SerializeField] private AIEmotions currentEmotion;
 
     private void Awake()
     {
@@ -21,7 +20,6 @@ public class AIController : MonoBehaviour
     void Update()
     {
         RunStateMachine();
-        FollowPlayer();
     }
 
     private void RunStateMachine()
@@ -31,6 +29,23 @@ public class AIController : MonoBehaviour
         if(nextState != null)
         {
             //switch to next state
+            switch (nextState)
+            {
+                case NeutralEmotion:
+                    ChangeEmotionToTarget(nextState);
+                    FollowPlayer(5.0f);
+                    break;
+                case UncertainEmotion:
+                    ChangeEmotionToTarget(nextState);
+                    break;
+                case MarvelEmotion:
+                    ChangeEmotionToTarget(nextState);
+                    break;
+                case DeadEmotion:
+                    ChangeEmotionToTarget(nextState);
+                    break;
+
+            }
         }
     }
 
@@ -38,10 +53,10 @@ public class AIController : MonoBehaviour
     {
         currentEmotion = nextState;
     }
-    private void FollowPlayer()
+    private void FollowPlayer(float f)
     {
         float _dist = Vector3.Distance(_player.transform.position, transform.position);
-        if (_dist >= _tetherDistance)
+        if (_dist >= f)
         {
             transform.position = Vector3.SmoothDamp(transform.position, _player.transform.position, ref _velocity, _smoothTime);
         }
@@ -53,12 +68,8 @@ public class AIController : MonoBehaviour
         {
             case "Aversion":
                 Debug.Log("AAAAAH");
+                
                 break;
         }
-    }
-
-    private void OnCollisionEnter(Collision collision)
-    {
-        Debug.Log(collision);
     }
 }
