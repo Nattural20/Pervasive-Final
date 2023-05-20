@@ -7,7 +7,9 @@ public class AIController : MonoBehaviour
     [SerializeField] private GameObject _player; //gives the Companion a target to follow
 
     private Vector3 _velocity = Vector3.zero; 
-    private float _smoothTime = 0.25f;
+    public float _dist;
+    private bool ubool = false;
+
 
     [SerializeField] private AIEmotions currentEmotion; //Initializes the state machine
     [SerializeField] private AIEmotions[] emotions;
@@ -23,6 +25,8 @@ public class AIController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        _dist = Vector3.Distance(_player.transform.position, transform.position);
+
         RunStateMachine();
     }
 
@@ -32,15 +36,20 @@ public class AIController : MonoBehaviour
 
         if(nextState != null)
         {
-            //switch to next state
+            //switch to next sate
             switch (nextState)
             {
                 case NeutralEmotion: //This is companion's default state
                     ChangeEmotionToTarget(nextState);
-                    FollowPlayer(5.0f);
-                    Debug.Log(currentEmotion);
+                    ubool = false;
+                    FollowPlayer(5.0f, 0.5f);
                     break;
                 case UncertainEmotion:
+                    if(_dist >= 15 || ubool)
+                    {
+                        FollowPlayer(2.5f, 0.1f);
+                        ubool = true;
+                    }
                     ChangeEmotionToTarget(nextState);
                     break;
                 case MarvelEmotion:
@@ -60,13 +69,17 @@ public class AIController : MonoBehaviour
         currentEmotion = nextState;
     }
 
-    private void FollowPlayer(float f)
+    public void FollowPlayer(float f, float _smoothTime)
     {
-        float _dist = Vector3.Distance(_player.transform.position, transform.position);
         if (_dist >= f)
         {
             transform.position = Vector3.SmoothDamp(transform.position, _player.transform.position, ref _velocity, _smoothTime);
         }
+    }
+
+    public void FollowPlayer(float _smoothTime)
+    {
+        transform.position = Vector3.SmoothDamp(transform.position, _player.transform.position, ref _velocity, _smoothTime);
     }
 
     private void OnTriggerEnter(Collider other)
@@ -74,11 +87,16 @@ public class AIController : MonoBehaviour
         switch (other.tag)
         {
             case "Aversion": //if the AI should be afraid of a location
-                Debug.Log("AAAAAH");
-                //change emotion to uncertain
-                //ChangeEmotionToTarget(UncertainEmotion);
                 ChangeEmotionToTarget(emotions[1]);
                 break;
+            default:
+                ChangeEmotionToTarget(emotions[0]);
+                break;
         }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        ChangeEmotionToTarget(emotions[0]);
     }
 }

@@ -12,4 +12,6 @@ public abstract class AIEmotions : MonoBehaviour
     }
 
     public abstract AIEmotions RunCurrentState();
+
+
 }

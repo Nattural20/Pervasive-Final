@@ -33,7 +33,6 @@ public class NeutralEmotion : AIEmotions
         }
         else
         {
-            Debug.Log(this);
             return this;
         }
     }

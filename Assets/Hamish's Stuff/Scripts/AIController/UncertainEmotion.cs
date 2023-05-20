@@ -8,12 +8,15 @@ using UnityEngine;
 /// <returns></returns>
 public class UncertainEmotion : AIEmotions
 {
+    public bool tooFar;
+
     public UncertainEmotion(AIController aicontroller) : base(aicontroller)
     {
-
+        tooFar = false;
     }
     public override AIEmotions RunCurrentState()
     {
+
         return this;
     }
 }
