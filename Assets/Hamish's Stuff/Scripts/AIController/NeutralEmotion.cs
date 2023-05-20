@@ -10,8 +10,8 @@ using UnityEngine;
 public class NeutralEmotion : AIEmotions
 {
 
-    MarvelEmotion MarvelEmotion;
-    UncertainEmotion UncertainEmotion;
+    public MarvelEmotion marvelEmotion;
+    public UncertainEmotion uncertainEmotion;
 
     public bool _isUncertain;
     public bool _isMarveling;
@@ -25,14 +25,15 @@ public class NeutralEmotion : AIEmotions
     {
         if (_isUncertain)
         {
-            return UncertainEmotion;
+            return uncertainEmotion;
         }
         else if (_isMarveling)
         {
-            return MarvelEmotion;
+            return marvelEmotion;
         }
         else
         {
+            Debug.Log(this);
             return this;
         }
     }

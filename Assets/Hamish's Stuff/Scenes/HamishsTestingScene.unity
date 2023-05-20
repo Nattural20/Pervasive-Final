@@ -296,6 +296,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9d7b3667e20fd2469336bf1e3e29819, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  marvelEmotion: {fileID: 0}
+  uncertainEmotion: {fileID: 0}
   _isUncertain: 0
   _isMarveling: 0
 --- !u!1 &60532441
@@ -3058,6 +3060,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _player: {fileID: 60532441}
   currentEmotion: {fileID: 37752421}
+  emotions:
+  - {fileID: 37752421}
+  - {fileID: 369463825}
+  - {fileID: 180300350}
+  - {fileID: 149308777}
 --- !u!65 &2021531299
 BoxCollider:
   m_ObjectHideFlags: 0
