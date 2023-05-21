@@ -45,7 +45,7 @@ public class AIController : MonoBehaviour
                     FollowPlayer(5.0f, 0.5f);
                     break;
                 case UncertainEmotion:
-                    if(_dist >= 15 || ubool)
+                    if(_dist >= 20 || ubool)
                     {
                         FollowPlayer(2.5f, 0.1f);
                         ubool = true;
