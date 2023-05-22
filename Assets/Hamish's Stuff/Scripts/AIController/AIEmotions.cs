@@ -4,11 +4,11 @@ using UnityEngine;
 
 public abstract class AIEmotions : MonoBehaviour
 {
-    protected AIController AIController;
+    protected AIController aiController;
 
     public AIEmotions(AIController aicontroller) //I'm trying to allow scripts that inherit from AIEmotions access to AIController's functions
     {
-        AIController = aicontroller;
+        aiController = aicontroller;
     }
 
     public abstract AIEmotions RunCurrentState();
