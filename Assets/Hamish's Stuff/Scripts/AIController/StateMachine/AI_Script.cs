@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AI_Script : MonoBehaviour
+public class AI_Script : StateMachine
 {
     [SerializeField] private GameObject _player; //gives the Companion a target to follow
 

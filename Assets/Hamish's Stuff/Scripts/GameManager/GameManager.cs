@@ -49,20 +49,18 @@ public class GameManager : MonoBehaviour
         {
             if (_playerMusic[0].volume <= 0)
             {
-                _musicTime = 10f;
+                _musicTime = 7.5f;
                 _playerMusic[0].Stop();
-                _playerMusic[1].volume = 0;
+                _playerMusic[0].volume = 0;
             }
             else
             {
-                _playerMusic[0].volume -= Time.deltaTime / 1.5f;
-
-
+                _playerMusic[0].volume -= Time.deltaTime / 2f;
             }
 
             if (_playerMusic[1].volume < 0)
             {
-                _musicTime2 = 5f;
+                _musicTime2 = 5.0f;
                 _playerMusic[1].Stop();
                 _playerMusic[1].volume = 0;
             }
@@ -107,8 +105,8 @@ public class GameManager : MonoBehaviour
     private Vector3 _default = new Vector3(0f, 0f, -10f);
     private CameraScript camerascript => _mainCamera.GetComponentInParent<CameraScript>();
     [SerializeField] AudioClip[] _tndnbtg;
-    [SerializeField] private float _musicTime = 10f;
-    [SerializeField] private float _musicTime2 = 5f;
+    [SerializeField] private float _musicTime = 7.5f;
+    [SerializeField] private float _musicTime2 = 5.0f;
     public void ScenicTrigger(bool b)
     {
         _inScenicMoment = b;

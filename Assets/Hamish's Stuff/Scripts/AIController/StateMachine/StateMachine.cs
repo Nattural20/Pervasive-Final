@@ -4,15 +4,11 @@ using UnityEngine;
 
 public abstract class StateMachine : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    protected State _state;
 
-    // Update is called once per frame
-    void Update()
+    public void SetState(State state)
     {
-        
+        _state = state;
+        StartCoroutine(_state.Start());
     }
 }

@@ -7,7 +7,7 @@ public class AIController : MonoBehaviour
     [SerializeField] private GameObject _player; //gives the Companion a target to follow
 
     private Vector3 _velocity = Vector3.zero; 
-    public float _dist;
+    public float _dist { get; private set; }
     private bool ubool = false;
 
 
@@ -56,7 +56,9 @@ public class AIController : MonoBehaviour
                     if(_dist >= 25)
                     {
                         nextState = emotions[0];
+                        //dislike player
                     }
+                    //The AI should marvel for ~45 seconds
                     ChangeEmotionToTarget(nextState);
                     break;
                 case DeadEmotion:
