@@ -40,11 +40,40 @@ public class GameManager : MonoBehaviour
     {
         _XInput = Input.GetAxisRaw("Horizontal");
         MoveBackground();
+        Debug.Log(_inScenicMoment);
         if (_inScenicMoment)
         {
             MomentOfAFracturedWorld();
         }
-        
+        else
+        {
+            if (_playerMusic[0].volume <= 0)
+            {
+                _musicTime = 10f;
+                _playerMusic[0].Stop();
+                _playerMusic[1].volume = 0;
+            }
+            else
+            {
+                _playerMusic[0].volume -= Time.deltaTime / 1.5f;
+
+
+            }
+
+            if (_playerMusic[1].volume < 0)
+            {
+                _musicTime2 = 5f;
+                _playerMusic[1].Stop();
+                _playerMusic[1].volume = 0;
+            }
+            else
+            {
+                _playerMusic[1].volume -= Time.deltaTime / 1.5f;
+            }
+            camerascript.offset = Vector3.MoveTowards(camerascript.offset, _default, 1.5f * Time.deltaTime);
+        }
+
+
     }
 
     private void LateUpdate()
@@ -75,12 +104,13 @@ public class GameManager : MonoBehaviour
     private bool _inScenicMoment;
     private AudioSource[] _playerMusic;
     private Vector3 _target = new Vector3(6.5f, 12f, -24f);
+    private Vector3 _default = new Vector3(0f, 0f, -10f);
+    private CameraScript camerascript => _mainCamera.GetComponentInParent<CameraScript>();
     [SerializeField] AudioClip[] _tndnbtg;
     [SerializeField] private float _musicTime = 10f;
     [SerializeField] private float _musicTime2 = 5f;
     public void ScenicTrigger(bool b)
     {
-        Debug.Log("Player Has Entered");
         _inScenicMoment = b;
     }
 
@@ -107,7 +137,6 @@ public class GameManager : MonoBehaviour
             _playerMusic[1].volume += 2 * Time.deltaTime;
             if (_musicTime2 <= 0)
             {
-                var camerascript = _mainCamera.GetComponentInParent<CameraScript>();
                 var speed = 1f * Time.deltaTime;
                 camerascript.offset = Vector3.MoveTowards(camerascript.offset, _target, speed);
             }

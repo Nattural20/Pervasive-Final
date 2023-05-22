@@ -53,6 +53,10 @@ public class AIController : MonoBehaviour
                     ChangeEmotionToTarget(nextState);
                     break;
                 case MarvelEmotion:
+                    if(_dist >= 25)
+                    {
+                        nextState = emotions[0];
+                    }
                     ChangeEmotionToTarget(nextState);
                     break;
                 case DeadEmotion:
@@ -88,6 +92,9 @@ public class AIController : MonoBehaviour
         {
             case "Aversion": //if the AI should be afraid of a location
                 ChangeEmotionToTarget(emotions[1]);
+                break;
+            case "Marvel":
+                ChangeEmotionToTarget(emotions[2]);
                 break;
             default:
                 ChangeEmotionToTarget(emotions[0]);
