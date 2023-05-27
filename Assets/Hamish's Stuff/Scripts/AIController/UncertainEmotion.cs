@@ -8,7 +8,14 @@ using UnityEngine;
 /// <returns></returns>
 public class UncertainEmotion : AIEmotions
 {
+<<<<<<< Updated upstream
     public bool tooFar;
+=======
+    public UncertainEmotion(AIController aiController) : base(aiController)
+    {
+
+    }
+>>>>>>> Stashed changes
 
     public UncertainEmotion(AIController aicontroller) : base(aicontroller)
     {

@@ -40,7 +40,6 @@ public class GameManager : MonoBehaviour
     {
         _XInput = Input.GetAxisRaw("Horizontal");
         MoveBackground();
-        Debug.Log(_inScenicMoment);
         if (_inScenicMoment)
         {
             MomentOfAFracturedWorld();
@@ -102,7 +101,7 @@ public class GameManager : MonoBehaviour
     private bool _inScenicMoment;
     private AudioSource[] _playerMusic;
     private Vector3 _target = new Vector3(6.5f, 12f, -24f);
-    private Vector3 _default = new Vector3(0f, 0f, -10f);
+    private Vector3 _default = new Vector3(0f, 2.5f, -5f);
     private CameraScript camerascript => _mainCamera.GetComponentInParent<CameraScript>();
     [SerializeField] AudioClip[] _tndnbtg;
     [SerializeField] private float _musicTime = 7.5f;
