@@ -7,15 +7,15 @@ using UnityEngine;
 /// </summary>
 /// <returns>
 /// </returns>
-public class DeadEmotion : AIEmotions
+public class DeadEmotion : Emotion
 {
-    public DeadEmotion(AIController aicontroller) : base(aicontroller)
+    public DeadEmotion(AIController aiController) : base(aiController)
     {
 
     }
 
-    public override AIEmotions RunCurrentState()
+    public override Emotion RunCurrentEmotion()
     {
-        return this;
+        throw new System.NotImplementedException();
     }
 }

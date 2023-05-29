@@ -48,7 +48,7 @@ public class GameManager : MonoBehaviour
         {
             if (_playerMusic[0].volume <= 0)
             {
-                _musicTime = 7.5f;
+                _musicTime = 2.5f;
                 _playerMusic[0].Stop();
                 _playerMusic[0].volume = 0;
             }
@@ -101,11 +101,12 @@ public class GameManager : MonoBehaviour
     private bool _inScenicMoment;
     private AudioSource[] _playerMusic;
     private Vector3 _target = new Vector3(6.5f, 12f, -24f);
-    private Vector3 _default = new Vector3(0f, 2.5f, -5f);
+    [SerializeField]private Vector3 _default = new Vector3(0f, 2.5f, -5f);
     private CameraScript camerascript => _mainCamera.GetComponentInParent<CameraScript>();
     [SerializeField] AudioClip[] _tndnbtg;
     [SerializeField] private float _musicTime = 7.5f;
     [SerializeField] private float _musicTime2 = 5.0f;
+    [SerializeField] private float _musicTime3 = 10.0f;
     public void ScenicTrigger(bool b)
     {
         _inScenicMoment = b;
@@ -121,30 +122,48 @@ public class GameManager : MonoBehaviour
             {
                 _playerMusic[0].Play();
             }
-            _playerMusic[0].loop = true;
+            //_playerMusic[0].loop = true;
         }
         else
         {
-            _playerMusic[0].loop = false;
-            _musicTime2 -= Time.deltaTime;
-            if (!_playerMusic[1].isPlaying && !_playerMusic[0].isPlaying)
+            if (!_playerMusic[0].isPlaying)
             {
-                _playerMusic[1].Play();
+                _musicTime2 -= Time.deltaTime;
+                _playerMusic[1].volume += 2 * Time.deltaTime;
+                if (!_playerMusic[1].isPlaying)
+                {
+                    _playerMusic[1].Play();
+                }
             }
-            _playerMusic[1].volume += 2 * Time.deltaTime;
+
+            //_playerMusic[0].loop = false;
+
             if (_musicTime2 <= 0)
             {
                 var speed = 1f * Time.deltaTime;
+                //_Player._active = false;
                 camerascript.offset = Vector3.MoveTowards(camerascript.offset, _target, speed);
+                _musicTime3 -= Time.deltaTime;
+                if (_musicTime3 <= 0)
+                {
+                    Debug.Log("TimeToLeave");
+                    EndOfMoment();
+                    _inScenicMoment = false;
+                }
             }
         }
+    }
+
+    private void EndOfMoment()
+    {
+        EventManager.MomentHasEnded();
     }
     #endregion
 
     #region BackgroundImage
     [Header("---Background Manipulation---")]
     [SerializeField] private GameObject _BackGround;
-    private Vector3 _bgImageOffset = new Vector3(-40f, -25f, -10f);
+    [SerializeField] private Vector3 _bgImageOffset = new Vector3(-40f, -25f, -10f);
     private float _BGsmoothTime = 0.25f;
     private Vector3 _BGvelocity = Vector3.zero;
 

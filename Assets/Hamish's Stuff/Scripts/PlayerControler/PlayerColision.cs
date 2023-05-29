@@ -11,11 +11,16 @@ public class PlayerColision : MonoBehaviour
         _tColider = GetComponent<BoxCollider>();
     }
 
-    private void OnTriggerStay(Collider other)
+    private void OnTriggerEnter(Collider other)
     {
         switch (other.tag){
             case "Marvel":
+                EventManager.EnteredArea(other.tag);
                 GameManager.Instance.ScenicTrigger(true);
+                break;
+            case "Aversion":
+                EventManager.EnteredArea(other.tag);
+                Debug.Log("AI Won't Like this");
                 break;
             default:
                 GameManager.Instance.ScenicTrigger(false);
@@ -24,6 +29,11 @@ public class PlayerColision : MonoBehaviour
     }
     private void OnTriggerExit(Collider other)
     {
+        if(other.tag == "Marvel")
+        {
+            Destroy(other);
+        }
         GameManager.Instance.ScenicTrigger(false);
+        EventManager.ExitArea(other.tag);
     }
 }

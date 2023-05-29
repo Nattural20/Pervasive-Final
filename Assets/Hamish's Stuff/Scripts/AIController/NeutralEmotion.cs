@@ -1,40 +1,23 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEditor.Experimental.GraphView.GraphView;
 
 /// <summary>
 /// This is for when the Companion is neutral
 /// </summary>
 /// <returns></returns>
 /// 
-public class NeutralEmotion : AIEmotions
+public class NeutralEmotion : Emotion
 {
-
-    public MarvelEmotion marvelEmotion;
-    public UncertainEmotion uncertainEmotion;
-
-    public bool _isUncertain;
-    public bool _isMarveling;
-
-    public NeutralEmotion(AIController aicontroller): base(aicontroller)
+    public NeutralEmotion(AIController aiController) : base(aiController)
     {
 
     }
 
-    public override AIEmotions RunCurrentState()
+    public override Emotion RunCurrentEmotion()
     {
-        if (_isUncertain)
-        {
-            return uncertainEmotion;
-        }
-        else if (_isMarveling)
-        {
-            return marvelEmotion;
-        }
-        else
-        {
-            return this;
-        }
+        aiController.FollowPlayer(5.0f, 0.5f);
+        return this;
     }
-
 }
