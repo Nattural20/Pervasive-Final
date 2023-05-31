@@ -38,13 +38,13 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        _XInput = Input.GetAxisRaw("Horizontal");
+        _XInput = Input.GetAxisRaw("Horizontal"); //NOTE: I probabbly should just have a input script that has public get functions but I'm not gonna change it
         MoveBackground();
         if (_inScenicMoment)
         {
-            MomentOfAFracturedWorld();
+            MomentOfAFracturedWorld(); //TODO: Change this to a coroutine
         }
-        else
+        else //TODO: This should be in it's own function that listens for an event
         {
             if (_playerMusic[0].volume <= 0)
             {
@@ -87,7 +87,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject _Player;
     private float _XInput;
 
-    private void TogglePlayerIsActive()
+    private void TogglePlayerIsActive() //I'm not sure if it's better to do this in the gamemanager script or the player script
     {
         /*
         var playerscript = _Player.GetComponent<Amatorii_Controller.PlayerController1>();
@@ -104,9 +104,13 @@ public class GameManager : MonoBehaviour
     [SerializeField]private Vector3 _default = new Vector3(0f, 2.5f, -5f);
     private CameraScript camerascript => _mainCamera.GetComponentInParent<CameraScript>();
     [SerializeField] AudioClip[] _tndnbtg;
+
+
     [SerializeField] private float _musicTime = 7.5f;
     [SerializeField] private float _musicTime2 = 5.0f;
     [SerializeField] private float _musicTime3 = 10.0f;
+    //Yucky^
+    
     public void ScenicTrigger(bool b)
     {
         _inScenicMoment = b;
@@ -175,7 +179,7 @@ public class GameManager : MonoBehaviour
     private void MoveBackground()
     {
         Vector3 targetPosition = _Player.transform.position - _bgImageOffset;
-        _BackGround.transform.position = Vector3.SmoothDamp(_BackGround.transform.position, targetPosition, ref _BGvelocity, _BGsmoothTime);
+        _BackGround.transform.position = Vector3.SmoothDamp(_BackGround.transform.position, targetPosition, ref _BGvelocity, _BGsmoothTime); //Might've been better to make a header so I don't have to keep typing this
         if(_XInput != 0)
         {
             _bgImageOffset.x += 2.5f * _XInput * Time.deltaTime;

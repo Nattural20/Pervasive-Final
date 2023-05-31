@@ -2,52 +2,55 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-/// <summary>
-/// This is for when the Companion sees the sprawling landscape and stops to look at it
-/// </summary>
-/// <returns>
-/// </returns>
-public class MarvelEmotion : Emotion
+namespace Hamish.AI
 {
-    private Emotion _neutralEmotion;
-    private bool _ttm;
-    private Vector3 _restingPos;
-    public Vector3 _velocity = Vector3.zero;
-
-    public MarvelEmotion(AIController aiController) : base(aiController)
+    /// <summary>
+    /// This is for when the Companion sees the sprawling landscape and stops to look at it
+    /// </summary>
+    /// <returns>
+    /// </returns>
+    public class MarvelEmotion : Emotion
     {
-        _ttm = false;
-        _neutralEmotion = new NeutralEmotion(aiController);
-        EventManager.momentHasEnded += TimeToMoveOn;
-        _restingPos = new Vector3(aiController.transform.position.x, 1, 0);
-}
+        private Emotion _neutralEmotion;
+        private bool _ttm;
+        private Vector3 _restingPos;
+        public Vector3 _velocity = Vector3.zero;
 
-public override Emotion RunCurrentEmotion()
-    {
-        if(aiController.dist >= 35)
+        public MarvelEmotion(AIController aiController) : base(aiController)
         {
-            EventManager.CompanionFriendship(false);
-            Debug.Log("Companion: Fuck You");
-            return _neutralEmotion;
+            _ttm = false;
+            _neutralEmotion = new NeutralEmotion(aiController);
+            EventManager.momentHasEnded += TimeToMoveOn;
+            _restingPos = new Vector3(aiController.transform.position.x, 1, 0);
         }
-        if (_ttm)
+
+        public override Emotion RunCurrentEmotion()
         {
-            EventManager.CompanionFriendship(true);
-            Debug.Log("Companion: Thank You");
-            return _neutralEmotion;
+            if (aiController.dist >= 35)
+            {
+                EventManager.CompanionFriendship(false);
+                Debug.Log("Companion: Fuck You");
+                return _neutralEmotion;
+            }
+            if (_ttm)
+            {
+                EventManager.CompanionFriendship(true);
+                Debug.Log("Companion: Thank You");
+                return _neutralEmotion;
+            }
+            aiController.transform.position = Vector3.SmoothDamp(aiController.transform.position, _restingPos, ref _velocity, 0.5f);
+
+            return this;
         }
-        aiController.transform.position = Vector3.SmoothDamp(aiController.transform.position, _restingPos, ref _velocity, 0.5f);
 
-        return this;
-    }
+        private void TimeToMoveOn()
+        {
+            _ttm = true;
+        }
 
-    private void TimeToMoveOn()
-    {
-        _ttm = true;
-    }
-
-    private void OnDisable()
-    {
-        EventManager.leftCorruption -= TimeToMoveOn;
-    }
+        private void OnDisable()
+        {
+            EventManager.leftCorruption -= TimeToMoveOn;
+        }
+    } 
 }

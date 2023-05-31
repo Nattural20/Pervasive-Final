@@ -29,7 +29,7 @@ public class EventManager : MonoBehaviour
         }
     }
 
-    public static void ExitArea(string tag)
+    public static void ExitArea(string tag) //TODO: Does listening for when the player leaves save memory? Is it worth to just keep triggering the event while the player is in the collision zone
     {
         switch (tag)
         {

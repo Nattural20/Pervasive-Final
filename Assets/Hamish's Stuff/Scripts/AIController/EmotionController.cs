@@ -2,43 +2,46 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class EmotionController : MonoBehaviour
+namespace Hamish.AI
 {
-    protected Emotion _emotion;
-
-    private Emotion currentEmotion;
-
-    public void StartState(Emotion emotion)
+    public abstract class EmotionController : MonoBehaviour
     {
-        _emotion = emotion;
-        currentEmotion = emotion;
-        _emotion.RunCurrentEmotion();
-    }
+        protected Emotion _emotion;
 
-    public void RunStateMachine()
-    {
-        Emotion nextEmotion = currentEmotion?.RunCurrentEmotion();
+        private Emotion currentEmotion;
 
-        switch (nextEmotion)
+        public void StartState(Emotion emotion)
         {
-            case NeutralEmotion:
-                SetState(nextEmotion);
-                break;
-            case UncertainEmotion:
-                SetState(nextEmotion);
-                break;
-            case MarvelEmotion:
-                SetState(nextEmotion);
-                break;
-            case DeadEmotion:
-                SetState(nextEmotion);
-                break;
+            _emotion = emotion;
+            currentEmotion = emotion;
+            _emotion.RunCurrentEmotion();
         }
-        Debug.Log("Emotion: " + nextEmotion.ToString());
-    }
 
-    public void SetState(Emotion emotion)
-    {
-        currentEmotion = emotion;
-    }
+        public void RunStateMachine()
+        {
+            Emotion nextEmotion = currentEmotion?.RunCurrentEmotion();
+
+            switch (nextEmotion)
+            {
+                case NeutralEmotion:
+                    SetState(nextEmotion);
+                    break;
+                case UncertainEmotion:
+                    SetState(nextEmotion);
+                    break;
+                case MarvelEmotion:
+                    SetState(nextEmotion);
+                    break;
+                case DeadEmotion:
+                    SetState(nextEmotion);
+                    break;
+            }
+            Debug.Log("Emotion: " + nextEmotion.ToString());
+        }
+
+        public void SetState(Emotion emotion)
+        {
+            currentEmotion = emotion;
+        }
+    } 
 }

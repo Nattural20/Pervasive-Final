@@ -4,17 +4,11 @@ using UnityEngine;
 
 public class BackgroundScript : MonoBehaviour
 {
-    private Vector3 offset = new Vector3(-10f, -15f, -10f);
+    private Vector3 offset = new Vector3(-10f, -15f, -10f); //This is so badly writen, but it's fine
     private float smoothTime = 0.25f;
     private Vector3 velocity = Vector3.zero;
 
     [SerializeField] private Transform target;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
     // Update is called once per frame
     void Update()
