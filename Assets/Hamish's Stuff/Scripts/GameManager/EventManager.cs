@@ -5,6 +5,8 @@ using System;
 
 public class EventManager : MonoBehaviour
 {
+    public static event Action togglePlayer;
+
     public static event Action enteredCorruption;
     public static event Action leftCorruption;
 
@@ -52,6 +54,11 @@ public class EventManager : MonoBehaviour
         {
             dislikePlayer?.Invoke();
         }
+    }
+
+    public static void TogglePlayer()
+    {
+        togglePlayer?.Invoke();
     }
 
     public static void MomentHasEnded()

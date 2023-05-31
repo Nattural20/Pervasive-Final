@@ -23,7 +23,6 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         _screenBounds = _mainCamera.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, _mainCamera.transform.position.z));
-
         //Music Stuff
         _playerMusic = _Player.GetComponentsInChildren<AudioSource>();
         _playerMusic[0].volume = 0f;
@@ -38,6 +37,9 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
+        if(Input.GetKeyDown(KeyCode.KeypadEnter)) 
+        {
+        }
         _XInput = Input.GetAxisRaw("Horizontal"); //NOTE: I probabbly should just have a input script that has public get functions but I'm not gonna change it
         MoveBackground();
         if (_inScenicMoment)
@@ -145,6 +147,7 @@ public class GameManager : MonoBehaviour
             if (_musicTime2 <= 0)
             {
                 var speed = 1f * Time.deltaTime;
+                EventManager.TogglePlayer();
                 //_Player._active = false;
                 camerascript.offset = Vector3.MoveTowards(camerascript.offset, _target, speed);
                 _musicTime3 -= Time.deltaTime;
@@ -161,6 +164,7 @@ public class GameManager : MonoBehaviour
     public void EndOfMoment()
     {
         EventManager.MomentHasEnded();
+        EventManager.TogglePlayer();
     }
     #endregion
 

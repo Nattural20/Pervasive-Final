@@ -11,7 +11,7 @@ namespace Amatorii_Controller {
     /// if there's enough interest. You can play and compete for best times here: https://tarodev.itch.io/
     /// If you hve any questions or would like to brag about your score, come to discord: https://discord.gg/GqeHHnhHpz
     /// </summary>
-    public class PlayerController1 : MonoBehaviour, IPlayerController {
+    public class PlayerController1 : AnimationController, IPlayerController {
         // Public for external hooks
         public Vector3 Velocity { get; private set; }
         public FrameInput Input { get; private set; }
@@ -28,16 +28,20 @@ namespace Amatorii_Controller {
         public float _currentVerticalSpeed { get; private set; }
 
         // This is horrible, but for some reason colliders are not fully established when update starts...
-        public bool _active;
+        private bool _active;
         void Awake() => Invoke(nameof(Activate), 0.5f);
-        void Activate() =>  _active = true;
-        
+        void Activate() =>  _active = false;
+
+        private void Start()
+        {
+            EventManager.togglePlayer += ChangeActive;
+        }
+
         private void Update() {
             if(!_active) return;
             // Calculate velocity
             Velocity = (transform.position - _lastPosition) / Time.deltaTime;
             _lastPosition = transform.position;
-
             GatherInput();
             RunCollisionChecks();
 
@@ -45,10 +49,14 @@ namespace Amatorii_Controller {
             CalculateJumpApex(); // Affects fall speed, so calculate before gravity
             CalculateGravity(); // Vertical movement
             CalculateJump(); // Possibly overrides vertical
-
+            RunAnimation();
             MoveCharacter(); // Actually perform the axis movement
         }
 
+        public void ChangeActive()
+        {
+            _active = !_active;
+        }
 
         #region Gather Input
 
