@@ -37,9 +37,6 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        if(Input.GetKeyDown(KeyCode.KeypadEnter)) 
-        {
-        }
         _XInput = Input.GetAxisRaw("Horizontal"); //NOTE: I probabbly should just have a input script that has public get functions but I'm not gonna change it
         MoveBackground();
         if (_inScenicMoment)

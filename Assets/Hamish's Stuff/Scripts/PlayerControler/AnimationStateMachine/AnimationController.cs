@@ -8,30 +8,62 @@ namespace Amatorii_Controller
 {
     public class AnimationController : MonoBehaviour
     {
-        private AnimationState _currentState;
-        protected AnimationState _initAnim;
-
+        private PlayerController1 _p;
+        private Animator _anim;
+        private bool _facingRight = false;
 
         private void Start()
         {
-            //_initAnim = 
+            _p = GetComponent<PlayerController1>();
+            _anim = GetComponentInChildren<Animator>();
         }
 
         void Update()
         {
-            RunAnimation();
+            if (_p.Grounded)
+            {
+                if(_p.Input.X != 0)
+                {
+                    StartCoroutine(RunAnimation(_p.Input.X));
+                    return;
+                }
+                else
+                {
+                    if(_facingRight)
+                        _anim.Play("metarig_Character_Idle_Right");
+                    else
+                        _anim.Play("metarig_Character_Idle_Left");
+                }
+            }
         }
 
-        public void RunAnimation()
+        private IEnumerator RunAnimation(float i) //if I is negative, the player is facing left
         {
-            AnimationState state = _currentState?.ExecuteAnimation();
-
-            switch(state)
+            if(i == -1)
             {
-                case StateJump:
-                    
-                    break;
+                if(_facingRight)
+                    _anim.Play("metarig_Character_Switch_RightLeft");
+                else
+                    _anim.Play("metarig_Character_IdleRun_Left");
+                _facingRight = false;
             }
+            else
+            {
+                if (!_facingRight)
+                    _anim.Play("metarig_Character_Switch_LeftRight");
+                else
+                    _anim.Play("metarig_Character_IdleRun_Right");
+                _facingRight = true;
+            }
+            float animationLength = _anim.GetCurrentAnimatorStateInfo(0).length;
+
+            yield return new WaitForSeconds(animationLength);
+
+                if (_facingRight)
+                    _anim.Play("metarig_Character_RunningLoop_Right");
+                else
+                    _anim.Play("metarig_Character_RunningLoop_Left");
+            
         }
     }
 }

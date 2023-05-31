@@ -30,7 +30,7 @@ namespace Amatorii_Controller {
         // This is horrible, but for some reason colliders are not fully established when update starts...
         private bool _active;
         void Awake() => Invoke(nameof(Activate), 0.5f);
-        void Activate() =>  _active = false;
+        void Activate() =>  _active = true;
 
         private void Start()
         {
@@ -49,7 +49,6 @@ namespace Amatorii_Controller {
             CalculateJumpApex(); // Affects fall speed, so calculate before gravity
             CalculateGravity(); // Vertical movement
             CalculateJump(); // Possibly overrides vertical
-            RunAnimation();
             MoveCharacter(); // Actually perform the axis movement
         }
 
