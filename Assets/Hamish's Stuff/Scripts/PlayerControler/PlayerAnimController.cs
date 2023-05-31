@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEditor.Animations;
 using UnityEngine;
 
-public class PlayerAnimController : MonoBehaviour
+public class PlayerAnimController : PlayerController1
 {
     private Animator _anim;
     private PlayerController1 _playerController;
@@ -18,16 +18,17 @@ public class PlayerAnimController : MonoBehaviour
         _moving = false;
         _facingRight = true;
         _anim = GetComponentInChildren<Animator>();
-        _playerController= GetComponent<PlayerController1>();
+        //_playerController= GetComponent<PlayerController1>();
     }
 
     // Update is called once per frame
     void Update()
     {
         //Debug.Log(_playerController.RawMovement.y);
-        if (_playerController.Input.X != 0)
+        if (Input.X != 0)
         {
-            MovePlayer(_playerController.Input.X);
+            MovePlayer(Input.X);
+            Debug.Log(Input.X);
             return;
         }
         _moving = false;
@@ -39,21 +40,6 @@ public class PlayerAnimController : MonoBehaviour
         {
             _anim.Play("metarig_Character_Idle_Left");
         }
-        /*
-        if (_playerController.Input.JumpDown)
-        {
-            _anim.Play("Jumping");
-
-        }
-        if (_playerController._currentVerticalSpeed >= -10)
-        {
-
-        }
-        if (_playerController.LandingThisFrame)
-        {
-
-        }
-        */
     }
 
     private void MovePlayer(float direct)

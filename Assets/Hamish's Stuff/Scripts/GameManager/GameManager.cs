@@ -1,3 +1,4 @@
+using Amatorii_Controller;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -24,7 +25,6 @@ public class GameManager : MonoBehaviour
         _screenBounds = _mainCamera.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, _mainCamera.transform.position.z));
 
         //Music Stuff
-
         _playerMusic = _Player.GetComponentsInChildren<AudioSource>();
         _playerMusic[0].volume = 0f;
         _playerMusic[1].volume = 0f;
@@ -158,7 +158,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    private void EndOfMoment()
+    public void EndOfMoment()
     {
         EventManager.MomentHasEnded();
     }
