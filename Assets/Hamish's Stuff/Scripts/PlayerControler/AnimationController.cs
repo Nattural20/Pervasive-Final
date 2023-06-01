@@ -6,11 +6,15 @@ using UnityEngine;
 
 namespace Amatorii_Controller
 {
+    /// <summary>
+    /// If anyone changes this or the animator's state machine,
+    /// I will commit a hate crime agaisnt you and your family
+    /// </summary>
     public class AnimationController : MonoBehaviour
     {
         private PlayerController1 _p;
         private Animator _anim;
-        [SerializeField] private bool _facingRight = true;
+        [SerializeField] private bool _facingRight = false;
         [SerializeField]private bool _moving = false;
 
         private void Start()
@@ -127,4 +131,3 @@ namespace Amatorii_Controller
         }
     }
 }
-

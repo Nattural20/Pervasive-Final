@@ -22,6 +22,7 @@ namespace Hamish.AI
             _neutralEmotion = new NeutralEmotion(aiController);
             EventManager.momentHasEnded += TimeToMoveOn;
             _restingPos = new Vector3(aiController.transform.position.x, 1, 0);
+            aiController.PlayEyeAnimation("Marvel", aiController._sprite[2]);
         }
 
         public override Emotion RunCurrentEmotion()

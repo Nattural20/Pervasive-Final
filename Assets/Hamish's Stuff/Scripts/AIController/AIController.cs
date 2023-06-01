@@ -10,6 +10,10 @@ namespace Hamish.AI{
         private Vector3 _velocity = Vector3.zero;
         public float dist { get; private set; }
 
+        [SerializeField] private ParticleSystem[] _particleSystem;
+        [SerializeField] public Sprite[] _sprite;
+        private Animation _anim;
+
         private void Awake()
         {
             StartState(new NeutralEmotion(this));
@@ -28,6 +32,11 @@ namespace Hamish.AI{
             {
                 transform.position = Vector3.SmoothDamp(transform.position, _player.transform.position, ref _velocity, _smoothTime);
             }
+        }
+
+        public void PlayEyeAnimation(string animation, Sprite sprite)
+        {
+            _anim.Play(animation);
         }
 
         private void OnTriggerEnter(Collider other)
