@@ -28,7 +28,7 @@ namespace Amatorii_Controller {
         public float _currentVerticalSpeed { get; private set; }
 
         // This is horrible, but for some reason colliders are not fully established when update starts...
-        private bool _active;
+        [SerializeField]public bool _active {get; private set;}
         void Awake() => Invoke(nameof(Activate), 0.5f);
         void Activate() =>  _active = true;
 
@@ -38,7 +38,8 @@ namespace Amatorii_Controller {
         }
 
         private void Update() {
-            if(!_active) return;
+            if(!_active) 
+                return;
             // Calculate velocity
             Velocity = (transform.position - _lastPosition) / Time.deltaTime;
             _lastPosition = transform.position;

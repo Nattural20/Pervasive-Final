@@ -18,7 +18,6 @@ namespace Hamish.AI
 
         public MarvelEmotion(AIController aiController) : base(aiController)
         {
-            Debug.Log("Hi");
             _ttm = false;
             _neutralEmotion = new NeutralEmotion(aiController);
             EventManager.momentHasEnded += TimeToMoveOn;

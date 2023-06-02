@@ -29,6 +29,7 @@ public class GameManager : MonoBehaviour
         _playerMusic[1].volume = 0f;
 
         //Background Stuff
+        _playerController1 = _Player.GetComponent<PlayerController1>();
 
         foreach (GameObject obj in levels) LoadChildrenObjects(obj) ;
 
@@ -84,6 +85,7 @@ public class GameManager : MonoBehaviour
     #region Player
     [Header("---Player---")]
     [SerializeField] private GameObject _Player;
+    private PlayerController1 _playerController1;
     private float _XInput;
 
     private void TogglePlayerIsActive() //I'm not sure if it's better to do this in the gamemanager script or the player script
@@ -131,6 +133,10 @@ public class GameManager : MonoBehaviour
         {
             if (!_playerMusic[0].isPlaying)
             {
+                if (_playerController1._active)
+                {
+                    EventManager.TogglePlayer();
+                }
                 _musicTime2 -= Time.deltaTime;
                 _playerMusic[1].volume += 2 * Time.deltaTime;
                 if (!_playerMusic[1].isPlaying)
@@ -144,7 +150,6 @@ public class GameManager : MonoBehaviour
             if (_musicTime2 <= 0)
             {
                 var speed = 1f * Time.deltaTime;
-                EventManager.TogglePlayer();
                 //_Player._active = false;
                 camerascript.offset = Vector3.MoveTowards(camerascript.offset, _target, speed);
                 _musicTime3 -= Time.deltaTime;
