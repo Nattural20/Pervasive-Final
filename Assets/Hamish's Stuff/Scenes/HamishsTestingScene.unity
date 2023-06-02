@@ -6214,6 +6214,11 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 615660740}
   m_Mesh: {fileID: 786937090950589053, guid: 2ef10c45a549bf34e94bd7bbc24c452e, type: 3}
+--- !u!198 &618903616 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 3936095476685485549, guid: 26a000da0b57c7346baa56bd8c5eeb63, type: 3}
+  m_PrefabInstance: {fileID: 6913315816882690758}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &637802575
 GameObject:
   m_ObjectHideFlags: 0
@@ -19239,6 +19244,10 @@ PrefabInstance:
       propertyPath: _particleSystem.Array.data[1]
       value: 
       objectReference: {fileID: 7265739027202982353, guid: f7024340a358aa74f9e1ee2650ef9e99, type: 3}
+    - target: {fileID: 6913315815401964644, guid: 26a000da0b57c7346baa56bd8c5eeb63, type: 3}
+      propertyPath: _particleSystem.Array.data[2]
+      value: 
+      objectReference: {fileID: 618903616}
     - target: {fileID: 6913315815401964646, guid: 26a000da0b57c7346baa56bd8c5eeb63, type: 3}
       propertyPath: m_Name
       value: AI

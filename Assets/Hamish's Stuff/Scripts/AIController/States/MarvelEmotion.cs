@@ -18,11 +18,12 @@ namespace Hamish.AI
 
         public MarvelEmotion(AIController aiController) : base(aiController)
         {
+            Debug.Log("Hi");
             _ttm = false;
             _neutralEmotion = new NeutralEmotion(aiController);
             EventManager.momentHasEnded += TimeToMoveOn;
             _restingPos = new Vector3(aiController.transform.position.x, 1, 0);
-            aiController.PlayEyeAnimation("Marvel", aiController._sprite[2]);
+            //aiController.PlayEyeAnimation("Marvel", aiController._sprite[2]);
         }
 
         public override Emotion RunCurrentEmotion()
@@ -39,7 +40,6 @@ namespace Hamish.AI
                 Debug.Log("Companion: Thank You");
                 return _neutralEmotion;
             }
-            aiController.transform.position = Vector3.SmoothDamp(aiController.transform.position, _restingPos, ref _velocity, 0.5f);
 
             return this;
         }

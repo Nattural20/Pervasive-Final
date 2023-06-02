@@ -33,12 +33,12 @@ namespace Hamish.AI{
                 transform.position = Vector3.SmoothDamp(transform.position, _player.transform.position, ref _velocity, _smoothTime);
             }
         }
-
-        public void PlayEyeAnimation(string animation, Sprite sprite)
+        /*
+        public void PlayEyeAnimation(string animation)
         {
             _anim.Play(animation);
         }
-
+        */
         private void OnTriggerEnter(Collider other)
         {
             switch (other.tag)
