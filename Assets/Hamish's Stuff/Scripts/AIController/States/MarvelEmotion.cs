@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -13,21 +14,24 @@ namespace Hamish.AI
     {
         private Emotion _neutralEmotion;
         private bool _ttm;
+        private bool _dontcare;
         private Vector3 _restingPos;
         public Vector3 _velocity = Vector3.zero;
 
         public MarvelEmotion(AIController aiController) : base(aiController)
         {
             _ttm = false;
+            _dontcare = false;
             _neutralEmotion = new NeutralEmotion(aiController);
             EventManager.momentHasEnded += TimeToMoveOn;
+            EventManager.leftScenic += BreakCinematic;
             _restingPos = new Vector3(aiController.transform.position.x, 1, 0);
             //aiController.PlayEyeAnimation("Marvel", aiController._sprite[2]);
         }
 
         public override Emotion RunCurrentEmotion()
         {
-            if (aiController.dist >= 35)
+            if (_dontcare)
             {
                 EventManager.CompanionFriendship(false);
                 Debug.Log("Companion: Fuck You");
@@ -46,6 +50,11 @@ namespace Hamish.AI
         private void TimeToMoveOn()
         {
             _ttm = true;
+        }
+
+        private void BreakCinematic()
+        {
+            _dontcare = true;
         }
 
         private void OnDisable()

@@ -7,7 +7,7 @@ namespace Hamish.AI{
     /// <summary>
     /// This is the Parent Class for all the Emotion States
     /// </summary>
-    public abstract class Emotion
+    public abstract class Emotion 
     {
         protected AIController aiController;
         //protected Sprite _eyeSprite;
