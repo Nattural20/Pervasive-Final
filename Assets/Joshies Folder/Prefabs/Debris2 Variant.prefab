@@ -1,0 +1,85 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &2215453898127579853
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1189963454984650816, guid: f794cc5b44a612941bcfdddb254a7d33, type: 3}
+      propertyPath: m_Name
+      value: Debris2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1189963454984650817, guid: f794cc5b44a612941bcfdddb254a7d33, type: 3}
+      propertyPath: m_RootOrder
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1189963454984650817, guid: f794cc5b44a612941bcfdddb254a7d33, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 298.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1189963454984650817, guid: f794cc5b44a612941bcfdddb254a7d33, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 33.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 1189963454984650817, guid: f794cc5b44a612941bcfdddb254a7d33, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1189963454984650817, guid: f794cc5b44a612941bcfdddb254a7d33, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1189963454984650817, guid: f794cc5b44a612941bcfdddb254a7d33, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1189963454984650817, guid: f794cc5b44a612941bcfdddb254a7d33, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1189963454984650817, guid: f794cc5b44a612941bcfdddb254a7d33, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1189963454984650817, guid: f794cc5b44a612941bcfdddb254a7d33, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1189963454984650817, guid: f794cc5b44a612941bcfdddb254a7d33, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1189963454984650817, guid: f794cc5b44a612941bcfdddb254a7d33, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1189963454986913172, guid: f794cc5b44a612941bcfdddb254a7d33, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 1189963454986913172, guid: f794cc5b44a612941bcfdddb254a7d33, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 1189963454986913172, guid: f794cc5b44a612941bcfdddb254a7d33, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: 1189963454986913175, guid: f794cc5b44a612941bcfdddb254a7d33, type: 3}
+      propertyPath: m_Name
+      value: Debris2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1189963454986913195, guid: f794cc5b44a612941bcfdddb254a7d33, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: -7387866890241856180, guid: 2ef10c45a549bf34e94bd7bbc24c452e, type: 3}
+    m_RemovedComponents:
+    - {fileID: 383778127250815936, guid: f794cc5b44a612941bcfdddb254a7d33, type: 3}
+    - {fileID: 8584281644422786594, guid: f794cc5b44a612941bcfdddb254a7d33, type: 3}
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: f794cc5b44a612941bcfdddb254a7d33, type: 3}

@@ -10,7 +10,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1086323617340387776, guid: 2b6f52fdeb749204ba08a27b9be37d28, type: 3}
       propertyPath: m_RootOrder
-      value: -1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1086323617340387776, guid: 2b6f52fdeb749204ba08a27b9be37d28, type: 3}
       propertyPath: m_LocalPosition.x
@@ -56,6 +56,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: TerrainSlope_Stone
       objectReference: {fileID: 0}
+    - target: {fileID: 1086323618420283058, guid: 2b6f52fdeb749204ba08a27b9be37d28, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 9d0323b50a097864c85630db3f34de2b, type: 2}
     - target: {fileID: 1086323618420283058, guid: 2b6f52fdeb749204ba08a27b9be37d28, type: 3}
       propertyPath: m_Materials.Array.data[1]
       value: 
