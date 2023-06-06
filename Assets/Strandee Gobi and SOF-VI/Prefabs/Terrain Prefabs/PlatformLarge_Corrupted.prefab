@@ -10,7 +10,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 820071911454575983, guid: 567581ac4b97906408e8a2cb7cda969f, type: 3}
       propertyPath: m_Name
-      value: Large Platform Corrupted
+      value: PlatformLarge_Corrupted
       objectReference: {fileID: 0}
     - target: {fileID: 5928897638298636973, guid: 567581ac4b97906408e8a2cb7cda969f, type: 3}
       propertyPath: m_RootOrder
@@ -64,6 +64,10 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[1]
       value: 
       objectReference: {fileID: 2100000, guid: e3ef0c8f08e98b14697cc9ea69f4e458, type: 2}
+    - target: {fileID: 8044146370879442914, guid: 567581ac4b97906408e8a2cb7cda969f, type: 3}
+      propertyPath: m_Materials.Array.data[2]
+      value: 
+      objectReference: {fileID: 2100000, guid: 24220c659dd783e4da5b2e2e8551882b, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
