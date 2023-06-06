@@ -25,6 +25,14 @@ namespace Amatorii_Controller
 
         void Update()
         {
+            if(!_p._active)
+            {
+                if (_facingRight)
+                    _anim.Play("metarig_Character_Idle_Right");
+                else
+                    _anim.Play("metarig_Character_Idle_Left");
+                return;
+            }
             if(_p.Input.X == -1)
             {
                 _facingRight = false;

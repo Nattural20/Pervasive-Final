@@ -12,25 +12,26 @@ namespace Hamish
         [SerializeField]private Vector3 offset;
         private float smoothTime = 0.25f;
         private Vector3 velocity = Vector3.zero;
-        [SerializeField] private Transform target;
+        [SerializeField] private Transform gobi;
+        [SerializeField] private Transform sofvi;
 
         private GameState state = GameState.FollowPlayer;
 
         // -------- Camera Positions ------------
         private Vector3 _default = new Vector3(0f, 0f, 10f);
-        private Vector3 _cinematic = new Vector3(6.5f, -12f, 24f);
+        private Vector3 _cinematic = new Vector3(-5f, -20f, 30f);
 
         private void Awake()
         {
             GameManager.triggerPan += ChangeStateCinematic;
             EventManager.leftScenic += ChangeStateDefault;
+            EventManager.enteredScenic += ChangeStateCinematicStart;
             EventManager.momentHasEnded += ChangeStateDefault;
         }
 
         void Update()
         {
             UpdateState(state);
-            FollowTarget();
         }
 
         private void UpdateState(GameState newState)
@@ -40,20 +41,26 @@ namespace Hamish
             {
                 case GameState.FollowPlayer:
                     ChangeOffset(_default, 4);
+                    FollowTarget(gobi);
                     break;
                 case GameState.TitleScreen:
                     break;
                 case GameState.CompanionDeath:
                     break;
+                case GameState.CinematicStart:
+                    ChangeOffset(_default, 4);
+                    FollowTarget(sofvi);
+                    break;
                 case GameState.Cinematic:
                     ChangeOffset(_cinematic);
+                    FollowTarget(sofvi);
                     break;
                 default:
                     throw new ArgumentOutOfRangeException(nameof(newState), newState, null);
             }
         }
 
-        private void FollowTarget()
+        private void FollowTarget(Transform target)
         {
             Vector3 targetPosition = target.position - offset;
             transform.position = Vector3.SmoothDamp(transform.position, targetPosition, ref velocity, smoothTime);
@@ -79,6 +86,10 @@ namespace Hamish
         {
             state = GameState.Cinematic;
         }
+        private void ChangeStateCinematicStart()
+        {
+            state = GameState.CinematicStart;
+        }
         private void ChangeStateDeath()
         {
             state = GameState.CompanionDeath;
@@ -90,6 +101,7 @@ namespace Hamish
             GameManager.triggerPan -= ChangeStateCinematic;
             EventManager.leftScenic -= ChangeStateDefault;
             EventManager.momentHasEnded -= ChangeStateDefault;
+            EventManager.enteredScenic -= ChangeStateCinematicStart;
         }
 
         private enum GameState
@@ -97,6 +109,7 @@ namespace Hamish
             FollowPlayer,
             TitleScreen,
             CompanionDeath,
+            CinematicStart,
             Cinematic
         }
     }

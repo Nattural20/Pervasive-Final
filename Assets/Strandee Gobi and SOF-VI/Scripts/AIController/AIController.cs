@@ -33,6 +33,13 @@ namespace Hamish.AI{
                 transform.position = Vector3.SmoothDamp(transform.position, _player.transform.position, ref _velocity, _smoothTime);
             }
         }
+        public void FollowPlayer(float f, float _smoothTime, Vector3 target)
+        {
+            if (dist >= f)
+            {
+                transform.position = Vector3.SmoothDamp(transform.position, target, ref _velocity, _smoothTime);
+            }
+        }
         /*
         public void PlayEyeAnimation(string animation)
         {

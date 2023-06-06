@@ -15,8 +15,9 @@ namespace Hamish.AI
         private Emotion _neutralEmotion;
         private bool _ttm;
         private bool _dontcare;
-        private Vector3 _restingPos;
+        private Vector3 _restingPos = new Vector3(175.0f, 38.0f, 0.0f);
         public Vector3 _velocity = Vector3.zero;
+        public Vector3 _rotateAngle = new Vector3(0.0f, 180.0f, 0.0f);
 
         public MarvelEmotion(AIController aiController) : base(aiController)
         {
@@ -25,7 +26,6 @@ namespace Hamish.AI
             _neutralEmotion = new NeutralEmotion(aiController);
             EventManager.momentHasEnded += TimeToMoveOn;
             EventManager.leftScenic += BreakCinematic;
-            _restingPos = new Vector3(aiController.transform.position.x, 1, 0);
             //aiController.PlayEyeAnimation("Marvel", aiController._sprite[2]);
         }
 
@@ -44,6 +44,11 @@ namespace Hamish.AI
                 return _neutralEmotion;
             }
 
+            aiController.FollowPlayer(0f, 0.75f, _restingPos);
+            if(aiController.transform.rotation.y <= 0.9f)
+            {
+                aiController.transform.Rotate(_rotateAngle * Time.deltaTime);
+            }
             return this;
         }
 
