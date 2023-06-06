@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -14,15 +15,25 @@ namespace Hamish.AI
     {
         private Quaternion _rotationAngle = Quaternion.identity;
         private float _yAngle;
+        private bool _amIDead;
 
         public NeutralEmotion(AIController aiController) : base(aiController)
         {
+            _amIDead = false;
+            EventManager.sofviHasDied += ChangeToDead;
+        }
 
+        private void ChangeToDead()
+        {
+            _amIDead = true;
         }
 
         public override Emotion RunCurrentEmotion()
         {
             aiController.FollowPlayer(5.0f, 0.5f);
+
+            if(_amIDead)
+                return new DeadEmotion(aiController);
 
             if(aiController.transform.rotation != _rotationAngle)
             {

@@ -38,17 +38,19 @@ namespace Amatorii_Controller {
         }
 
         private void Update() {
-            if(!_active) 
-                return;
+            
+
             // Calculate velocity
             Velocity = (transform.position - _lastPosition) / Time.deltaTime;
             _lastPosition = transform.position;
-            GatherInput();
             RunCollisionChecks();
-
-            CalculateWalk(); // Horizontal movement
             CalculateJumpApex(); // Affects fall speed, so calculate before gravity
             CalculateGravity(); // Vertical movement
+
+            if(!_active) 
+                return;
+            GatherInput();
+            CalculateWalk(); // Horizontal movement
             CalculateJump(); // Possibly overrides vertical
             MoveCharacter(); // Actually perform the axis movement
         }

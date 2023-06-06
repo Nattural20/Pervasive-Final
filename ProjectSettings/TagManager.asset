@@ -8,6 +8,8 @@ TagManager:
   - Aversion
   - Marvel
   - Dead
+  - Good
+  - Bad
   layers:
   - Default
   - TransparentFX

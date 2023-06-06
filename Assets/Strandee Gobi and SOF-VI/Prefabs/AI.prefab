@@ -211,7 +211,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6913315815401964647}
   - component: {fileID: 6913315815401964644}
-  - component: {fileID: 6913315815401964645}
+  - component: {fileID: 6913315816882690761}
   m_Layer: 0
   m_Name: AI
   m_TagString: AI
@@ -235,7 +235,7 @@ Transform:
   - {fileID: 6913315816090843236}
   - {fileID: 7132406744943051352}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &6913315815401964644
 MonoBehaviour:
@@ -251,17 +251,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _player: {fileID: 0}
   _particleSystem:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 8255935712868932338, guid: df0f659340acf1644b5ed0cf0ce4398f, type: 3}
+  - {fileID: 7265739027202982353, guid: f7024340a358aa74f9e1ee2650ef9e99, type: 3}
+  - {fileID: 3936095476685485549}
   - {fileID: 0}
   _sprite:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
---- !u!65 &6913315815401964645
-BoxCollider:
+--- !u!135 &6913315816882690761
+SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -279,7 +279,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
+  m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &6913315816090843239
 GameObject:
@@ -298,7 +298,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &6913315816090843236
 Transform:
   m_ObjectHideFlags: 0
@@ -342,7 +342,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 4a789d928dfc07740a3401724b8ca6e1, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -372,6 +372,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 6913315815401964647}
     m_Modifications:
+    - target: {fileID: 8255935712868932338, guid: df0f659340acf1644b5ed0cf0ce4398f, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.b
+      value: 0.6509434
+      objectReference: {fileID: 0}
+    - target: {fileID: 8255935712868932338, guid: df0f659340acf1644b5ed0cf0ce4398f, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.g
+      value: 0.6509434
+      objectReference: {fileID: 0}
+    - target: {fileID: 8255935712868932338, guid: df0f659340acf1644b5ed0cf0ce4398f, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.r
+      value: 0.6509434
+      objectReference: {fileID: 0}
     - target: {fileID: 8255935712888332210, guid: df0f659340acf1644b5ed0cf0ce4398f, type: 3}
       propertyPath: m_RootOrder
       value: 5
@@ -428,5 +440,10 @@ PrefabInstance:
 --- !u!4 &3936095476670279853 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8255935712888332210, guid: df0f659340acf1644b5ed0cf0ce4398f, type: 3}
+  m_PrefabInstance: {fileID: 4903619767440486175}
+  m_PrefabAsset: {fileID: 0}
+--- !u!198 &3936095476685485549 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 8255935712868932338, guid: df0f659340acf1644b5ed0cf0ce4398f, type: 3}
   m_PrefabInstance: {fileID: 4903619767440486175}
   m_PrefabAsset: {fileID: 0}

@@ -56,18 +56,21 @@ namespace Hamish.AI{
                 case "Marvel":
                     SetState(new MarvelEmotion(this));
                     break;
-                case "Dead":
-                    SetState(new DeadEmotion(this));
-                    break;
-                default:
-                    SetState(new NeutralEmotion(this));
-                    break;
             }
         }
 
         private void OnTriggerExit(Collider other)
         {
-            SetState(new NeutralEmotion(this));
+            if(other.tag == "Dead"){
+                
+                Debug.Log("Error 1");
+            }
+            if(other.tag == "Aversion"){
+                SetState(new NeutralEmotion(this));
+            }
+            if(other.tag == "Marvel"){
+                SetState(new NeutralEmotion(this));
+            }
         }
     }
 }

@@ -20,6 +20,10 @@ public class EventManager : MonoBehaviour
 
     public static event Action sofviHasDied;
 
+    public static event Action goodChoice;
+    public static event Action badChoice;
+
+
     public static void EnteredArea(string tag)
     {
         switch (tag)
@@ -29,6 +33,14 @@ public class EventManager : MonoBehaviour
                 break;
             case "Marvel":
                 enteredScenic?.Invoke();
+                break;
+            case "Good":
+                goodChoice?.Invoke();
+                togglePlayer?.Invoke();
+                break;
+            case "Bad":
+                badChoice?.Invoke();
+                togglePlayer?.Invoke();
                 break;
         }
     }

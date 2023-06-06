@@ -30,7 +30,6 @@ namespace Hamish
             _playerMusic = _player.GetComponentsInChildren<AudioSource>();
         }
 
-
         private void Start()
         {
             for (int i = 0; i < _playerMusic.Length; i++)
@@ -70,7 +69,7 @@ namespace Hamish
                 _playerMusic[2].volume += 0.001f;
                 yield return null;
             }
-            yield return new WaitForSeconds(3f);
+            yield return new WaitForSeconds(5f);
 
             //Phase 2
 
@@ -125,6 +124,7 @@ namespace Hamish
             for(int i = 0; i < _playerMusic.Length; i++){
                 _playerMusic[i].volume = 0;
             }
+            StartCoroutine(PauseMovement());
         }
 
         private IEnumerator FadeInMusic(AudioSource track){
@@ -137,6 +137,24 @@ namespace Hamish
 
         #endregion
         
+        #region The End
+        
+        public static event Action theChoice;
+
+        private IEnumerator PauseMovement() //This is the end
+        {
+            EventManager.TogglePlayer();
+
+            yield return new WaitForSeconds(3.0f);
+            theChoice?.Invoke();
+
+            yield return new WaitForSeconds(6.0f);
+            
+            EventManager.TogglePlayer();
+        }
+        
+        #endregion
+
         private void OnDisable()
         {
             EventManager.enteredScenic -= Cinematic;
