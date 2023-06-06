@@ -11,6 +11,7 @@ namespace Hamish.AI
     /// </returns>
     public class DeadEmotion : Emotion
     {
+        private Vector3 _sacrifice = new Vector3(343.4f, 88.0f, 0.0f);
         public DeadEmotion(AIController aiController) : base(aiController)
         {
 
@@ -18,7 +19,9 @@ namespace Hamish.AI
 
         public override Emotion RunCurrentEmotion()
         {
-            throw new System.NotImplementedException();
+            aiController.FollowPlayer(0f, 0.75f, _sacrifice);
+
+            return this;
         }
     } 
 }

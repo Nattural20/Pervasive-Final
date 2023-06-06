@@ -56,6 +56,9 @@ namespace Hamish.AI{
                 case "Marvel":
                     SetState(new MarvelEmotion(this));
                     break;
+                case "Dead":
+                    SetState(new DeadEmotion(this));
+                    break;
                 default:
                     SetState(new NeutralEmotion(this));
                     break;

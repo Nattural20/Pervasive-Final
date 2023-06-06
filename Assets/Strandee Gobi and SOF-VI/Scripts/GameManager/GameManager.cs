@@ -15,6 +15,7 @@ namespace Hamish
         [SerializeField] private AudioSource[] _playerMusic;
         [SerializeField]private float _musicVolume;
         public static event Action triggerPan;
+        public static event Action gameStart;
 
         private void Awake()
         {
@@ -51,13 +52,14 @@ namespace Hamish
         {
             canvas.SetActive(false);
             StartCoroutine(FadeInMusic(_playerMusic[1]));
+            gameStart?.Invoke();
             EventManager.TogglePlayer();
         }
 
         #region Cinematic
         private void Cinematic()
         {
-            StartCoroutine("MomentOfAFracturedWorld");
+            StartCoroutine(MomentOfAFracturedWorld());
         }
 
         private IEnumerator MomentOfAFracturedWorld()
@@ -79,13 +81,15 @@ namespace Hamish
                 _playerMusic[3].volume += 0.001f;
                 yield return null;
             }
+            Debug.Log("Moment is about to End");
 
             yield return new WaitForSeconds(10f);
+            Debug.Log("Moment Has Ended");
 
             while (_playerMusic[3].volume > 0.0f && _playerMusic[2].volume > 0.0f)
             {
-                _playerMusic[1].volume -= 0.001f;
-                _playerMusic[0].volume -= 0.001f;
+                _playerMusic[3].volume -= 0.001f;
+                _playerMusic[2].volume -= 0.001f;
                 yield return null;
             }
             EventManager.TogglePlayer();

@@ -15,7 +15,7 @@ namespace Hamish
         [SerializeField] private Transform gobi;
         [SerializeField] private Transform sofvi;
 
-        private GameState state = GameState.FollowPlayer;
+        private GameState state = GameState.TitleScreen;
 
         // -------- Camera Positions ------------
         private Vector3 _default = new Vector3(0f, 0f, 10f);
@@ -28,6 +28,7 @@ namespace Hamish
             EventManager.leftScenic += ChangeStateDefault;
             EventManager.enteredScenic += ChangeStateCinematicStart;
             EventManager.momentHasEnded += ChangeStateDefault;
+            GameManager.gameStart += ChangeStateDefault;
         }
 
         void Update()
