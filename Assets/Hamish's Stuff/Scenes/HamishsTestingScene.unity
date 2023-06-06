@@ -40583,7 +40583,7 @@ PrefabInstance:
       objectReference: {fileID: 618903616}
     - target: {fileID: 6913315815401964646, guid: 26a000da0b57c7346baa56bd8c5eeb63, type: 3}
       propertyPath: m_Name
-      value: AI
+      value: SOF - VI
       objectReference: {fileID: 0}
     - target: {fileID: 6913315815401964647, guid: 26a000da0b57c7346baa56bd8c5eeb63, type: 3}
       propertyPath: m_RootOrder
@@ -40883,7 +40883,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7761315469111194906, guid: c26e150851f797e4988c10fb25430fe0, type: 3}
       propertyPath: m_Name
-      value: Player
+      value: Gobi
       objectReference: {fileID: 0}
     - target: {fileID: 7761315469881272644, guid: c26e150851f797e4988c10fb25430fe0, type: 3}
       propertyPath: Loop
