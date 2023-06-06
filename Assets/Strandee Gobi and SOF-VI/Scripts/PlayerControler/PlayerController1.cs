@@ -30,7 +30,7 @@ namespace Amatorii_Controller {
         // This is horrible, but for some reason colliders are not fully established when update starts...
         [SerializeField]public bool _active {get; private set;}
         void Awake() => Invoke(nameof(Activate), 0.5f);
-        void Activate() =>  _active = true;
+        void Activate() =>  _active = false;
 
         private void Start()
         {

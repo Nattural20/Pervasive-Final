@@ -18,6 +18,8 @@ public class EventManager : MonoBehaviour
 
     public static event Action momentHasEnded;
 
+    public static event Action sofviHasDied;
+
     public static void EnteredArea(string tag)
     {
         switch (tag)
@@ -64,6 +66,10 @@ public class EventManager : MonoBehaviour
     public static void MomentHasEnded()
     {
         momentHasEnded?.Invoke();
+    }
+
+    public static void SofviHasDied(){
+        sofviHasDied?.Invoke();
     }
 
 }
