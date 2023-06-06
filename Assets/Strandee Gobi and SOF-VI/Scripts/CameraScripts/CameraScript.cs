@@ -19,6 +19,7 @@ namespace Hamish
 
         // -------- Camera Positions ------------
         private Vector3 _default = new Vector3(0f, 0f, 10f);
+        private Vector3 _startScreen = new Vector3(1f, 3f, -8f);
         private Vector3 _cinematic = new Vector3(-5f, -20f, 30f);
 
         private void Awake()
@@ -44,6 +45,7 @@ namespace Hamish
                     FollowTarget(gobi);
                     break;
                 case GameState.TitleScreen:
+                    ChangeOffset(_startScreen, 4);
                     break;
                 case GameState.CompanionDeath:
                     break;
@@ -81,7 +83,10 @@ namespace Hamish
         {
             state = GameState.FollowPlayer;
         }
-
+        private void ChangeStateStart()
+        {
+            state = GameState.TitleScreen;
+        }
         private void ChangeStateCinematic()
         {
             state = GameState.Cinematic;

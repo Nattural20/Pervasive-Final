@@ -45,6 +45,11 @@ namespace Hamish
 
         }
 
+        public void hideStartScreen(GameObject canvas)
+        {
+            canvas.SetActive(false);
+        }
+
         #region Cinematic
         private void Cinematic()
         {
