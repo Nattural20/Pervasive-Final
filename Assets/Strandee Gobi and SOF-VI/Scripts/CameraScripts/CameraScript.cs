@@ -20,7 +20,9 @@ namespace Hamish
         // -------- Camera Positions ------------
         private Vector3 _default = new Vector3(0f, 0f, 10f);
         private Vector3 _startScreen = new Vector3(1f, 3f, -8f);
-        private Vector3 _cinematic = new Vector3(-195f, -68.2f, -8f);
+        private Vector3 _cinematic = new Vector3(-24.0f, -22.0f, 0.0f);
+
+        private Camera _camera;
 
         private void Awake()
         {
@@ -29,6 +31,10 @@ namespace Hamish
             EventManager.enteredScenic += ChangeStateCinematicStart;
             EventManager.momentHasEnded += ChangeStateDefault;
             GameManager.gameStart += ChangeStateDefault;
+        }
+
+        private void Start(){
+            _camera = GetComponentInChildren<Camera>();
         }
 
         void Update()
@@ -42,7 +48,7 @@ namespace Hamish
             switch (newState)
             {
                 case GameState.FollowPlayer:
-                    ChangeOffset(_default, 4);
+                    ChangeOffset(_default, 10);
                     FollowTarget(gobi);
                     break;
                 case GameState.TitleScreen:
@@ -76,8 +82,22 @@ namespace Hamish
 
         private void ChangeOffset(Vector3 position, float speed)
         {
+            if(_camera.orthographicSize != 12.0f){
+                var cameraZoom = Math.Clamp(_camera.orthographicSize -= Time.deltaTime, 12.0f, 13.0f);
+                _camera.orthographicSize = cameraZoom;
+            }
             offset = Vector3.MoveTowards(offset, position, speed * Time.deltaTime);
         }
+
+        private IEnumerator ZoomOutCamera(){
+            while(_camera.orthographicSize !<= 20.0f){
+                _camera.orthographicSize += Time.deltaTime;
+                yield return new WaitForSeconds(0.01f);
+            }
+
+            yield return null;
+        }
+
 
         #region ChangeState
         private void ChangeStateDefault()
@@ -91,6 +111,7 @@ namespace Hamish
         private void ChangeStateCinematic()
         {
             state = GameState.Cinematic;
+            StartCoroutine(ZoomOutCamera());
         }
         private void ChangeStateCinematicStart()
         {
