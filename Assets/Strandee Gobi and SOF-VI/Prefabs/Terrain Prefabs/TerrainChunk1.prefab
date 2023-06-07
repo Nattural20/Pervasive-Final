@@ -43,7 +43,7 @@ GameObject:
   - component: {fileID: 6579494113409757389}
   - component: {fileID: 6579494113409757232}
   - component: {fileID: 6579494113409757235}
-  - component: {fileID: 1941591035645153070}
+  - component: {fileID: 7777069837087279218}
   m_Layer: 3
   m_Name: TerrainChunk1
   m_TagString: Untagged
@@ -117,8 +117,8 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!60 &1941591035645153070
-PolygonCollider2D:
+--- !u!61 &7777069837087279218
+BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -149,7 +149,7 @@ PolygonCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.00011283718, y: -0.0184626}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -159,25 +159,6 @@ PolygonCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Points:
-    m_Paths:
-    - - {x: 0.030476496, y: -0.0054605915}
-      - {x: 0.034375884, y: -0.00079707603}
-      - {x: 0.027255427, y: 0.0042991475}
-      - {x: 0.019136585, y: 0.004160898}
-      - {x: 0.008395636, y: 0.0038045365}
-      - {x: 0.0016935333, y: 0.0045715086}
-      - {x: -0.0121589275, y: 0.0070568807}
-      - {x: -0.018733596, y: 0.0057119806}
-      - {x: -0.024643958, y: 0.003923924}
-      - {x: -0.031516366, y: 0.0034130285}
-      - {x: -0.033496417, y: 0.0013455726}
-      - {x: -0.032704413, y: -0.010908366}
-      - {x: -0.02108055, y: -0.025574058}
-      - {x: 0.0023346916, y: -0.025423367}
-      - {x: 0.023474867, y: -0.023375249}
-      - {x: 0.022720855, y: -0.019777108}
-      - {x: 0.024777722, y: -0.016025811}
-      - {x: 0.03204964, y: -0.011348438}
-      - {x: 0.032278657, y: -0.008011288}
-  m_UseDelaunayMesh: 0
+  serializedVersion: 2
+  m_Size: {x: 0.06764229, y: 0.05101617}
+  m_EdgeRadius: 0
