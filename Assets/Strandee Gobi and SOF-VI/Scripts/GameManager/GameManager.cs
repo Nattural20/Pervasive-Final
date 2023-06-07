@@ -83,7 +83,6 @@ namespace Hamish
             Debug.Log("Moment is about to End");
 
             yield return new WaitForSeconds(10f);
-            Debug.Log("Moment Has Ended");
 
             while (_playerMusic[3].volume > 0.0f && _playerMusic[2].volume > 0.0f)
             {
@@ -99,7 +98,7 @@ namespace Hamish
 
         private void BreakCinematic()
         {
-            StopCoroutine("MomentOfAFracturedWorld");
+            StopCoroutine(MomentOfAFracturedWorld());
             _playerMusic[2].volume = 0.0f;
         }
 

@@ -20,12 +20,12 @@ namespace Hamish.AI
 
         private void PlayDead()
         {
-            aiController.GetComponent<Rigidbody2D>().gravityScale = 1;
+            aiController.GetComponent<Rigidbody>().useGravity = true;
         }
 
         public override Emotion RunCurrentEmotion()
         {
-            if(aiController.GetComponent<Rigidbody2D>().gravityScale != 1)
+            if(!aiController.GetComponent<Rigidbody>().useGravity)
                 aiController.FollowPlayer(0f, 0.75f, _sacrifice);
 
             return this;
