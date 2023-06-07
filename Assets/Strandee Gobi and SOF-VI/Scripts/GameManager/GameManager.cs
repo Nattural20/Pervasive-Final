@@ -99,7 +99,6 @@ namespace Hamish
 
         private void BreakCinematic()
         {
-            Debug.Log("Moment Has Ended");
             StopCoroutine(momentOfAFracturedWorld);
             _playerMusic[2].volume = 0.0f;
         }
@@ -122,15 +121,20 @@ namespace Hamish
 
         private void StopMusicPlayer()
         {
-            for(int i = 0; i < _playerMusic.Length; i++){
-                _playerMusic[i].volume = 0;
-            }
             StartCoroutine(PauseMovement());
         }
 
         private IEnumerator FadeInMusic(AudioSource track){
             while(track.volume !<= _musicVolume){
                 track.volume += 0.001f;
+                yield return null;
+            }
+            yield return null;
+        }
+
+        private IEnumerator FadeOutMusic(AudioSource track){
+            while(track.volume !<= 0.0f){
+                track.volume -= 0.0005f;
                 yield return null;
             }
             yield return null;
@@ -147,6 +151,10 @@ namespace Hamish
             EventManager.TogglePlayer();
 
             yield return new WaitForSeconds(3.0f);
+            
+            for(int i = 0; i < _playerMusic.Length; i++){
+                StartCoroutine(FadeOutMusic(_playerMusic[i]));
+            }
             theChoice?.Invoke();
 
             yield return new WaitForSeconds(6.0f);
@@ -159,7 +167,9 @@ namespace Hamish
         private void OnDisable()
         {
             EventManager.enteredScenic -= Cinematic;
-            EventManager.enteredScenic -= BreakCinematic;
+            EventManager.momentHasEnded -= EndCinematic;
+            EventManager.leftScenic -= BreakCinematic;
+            EventManager.sofviHasDied -= StopMusicPlayer;
         }
     }
 }
