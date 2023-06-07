@@ -49,7 +49,6 @@ namespace Hamish.AI{
         {
             switch (emote){
                 case NeutralEmotion:
-                    _particleSystem.Stop();
                     _particleSystem = _particleEmotions[0];
                     _particleSystem.Play();
                     break;
@@ -59,8 +58,14 @@ namespace Hamish.AI{
                     _particleSystem.Play();
                     break;
                 case MarvelEmotion:
+                    _particleSystem.Stop();
+                    _particleSystem = _particleEmotions[2];
+                    _particleSystem.Play();
                     break;
                 case DeadEmotion:
+                    _particleSystem.Stop();
+                    _particleSystem = _particleEmotions[3];
+                    _particleSystem.Play();
                     break;
             }
         }
