@@ -27,7 +27,6 @@ namespace Hamish.AI{
             _particleSystem = GetComponentInChildren<ParticleSystem>();
             RunStateMachine();
             ChangeEmotion(currentEmotion);
-            Debug.Log(_particleSystem);
         }
 
         public void FollowPlayer(float f, float _smoothTime)
@@ -47,27 +46,25 @@ namespace Hamish.AI{
         
         public void ChangeEmotion(Emotion emote)
         {
+            _particleSystem.Stop();
+            for(int i = 0; i < _particleEmotions.Length; i++){
+                    _particleEmotions[i].Stop();
+            }
             switch (emote){
                 case NeutralEmotion:
                     _particleSystem = _particleEmotions[0];
-                    _particleSystem.Play();
                     break;
                 case UncertainEmotion:
-                    _particleSystem.Stop();
                     _particleSystem = _particleEmotions[1];
-                    _particleSystem.Play();
                     break;
                 case MarvelEmotion:
-                    _particleSystem.Stop();
                     _particleSystem = _particleEmotions[2];
-                    _particleSystem.Play();
                     break;
                 case DeadEmotion:
-                    _particleSystem.Stop();
                     _particleSystem = _particleEmotions[3];
-                    _particleSystem.Play();
                     break;
             }
+            _particleSystem.Play();
         }
         
         private void OnTriggerEnter(Collider other)

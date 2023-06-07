@@ -5387,6 +5387,9 @@ MonoBehaviour:
   _player: {fileID: 60532441}
   _playerMusic: []
   _musicVolume: 0.1
+  _shock: {fileID: 8300000, guid: 1932e4539dd97924ab7cc0c3d7372a32, type: 3}
+  _goodMusic: {fileID: 8300000, guid: 8e3c190ccecd35147897741417447b2a, type: 3}
+  _badMusic: {fileID: 8300000, guid: ea56659e6c38bf142bd5bd0853e93587, type: 3}
 --- !u!1001 &267377565
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -16560,6 +16563,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1484667577}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
 --- !u!114 &807282379
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17510,14 +17525,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 877672551}
-  m_LocalRotation: {x: -0, y: -0, z: 0.3882719, w: 0.9215449}
+  m_LocalRotation: {x: -0, y: -0, z: 0.2894852, w: 0.95718247}
   m_LocalPosition: {x: 279.1, y: 40.7, z: 0}
-  m_LocalScale: {x: 125.697105, y: 45.45733, z: 1}
+  m_LocalScale: {x: 125.697105, y: 56.230717, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 756114369}
   m_RootOrder: -1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 45.694}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 33.654}
 --- !u!4 &880909943 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1543045698536653695, guid: b5531cbbdf54cf24194c291c82087b2d, type: 3}
@@ -44263,6 +44278,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1484667577}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
 --- !u!114 &2109419938
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -46133,11 +46160,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7761315469111194905, guid: c26e150851f797e4988c10fb25430fe0, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 342.7
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7761315469111194905, guid: c26e150851f797e4988c10fb25430fe0, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 88.1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7761315469111194905, guid: c26e150851f797e4988c10fb25430fe0, type: 3}
       propertyPath: m_LocalPosition.z

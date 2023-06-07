@@ -37,16 +37,17 @@ namespace Hamish
                     break;
                 case "Dead":
                     EventManager.SofviHasDied();
+                    canChoose = true;
                     Destroy(other);
                     break;
                 case "Good":
                     if(canChoose){
-                        EventManager.EnteredArea(other.tag);
+                        EventManager.EnteredArea("Good");
                     }
                     break;
                 case "Bad":
                     if(canChoose){
-                        EventManager.EnteredArea(other.tag);
+                        EventManager.EnteredArea("Bad");
                     }
                     break;
                 default:

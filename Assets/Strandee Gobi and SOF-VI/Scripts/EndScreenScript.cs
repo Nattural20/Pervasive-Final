@@ -20,19 +20,21 @@ public class EndScreenScript : MonoBehaviour
 
     private void EndScreen()
     {
-        _messageBox.GetComponent<TextMeshProUGUI>().text = "Cunt";
+        _messageBox.GetComponent<TextMeshProUGUI>().text = "Please remeber me Gobi ... you were all I had left";
         StartCoroutine(GoodEnding());
     }
 
     private void GoodEndScreen()
     {
+        Debug.Log("HI");
         _messageBox.GetComponent<TextMeshProUGUI>().text = "Thank You Gobi";
         StartCoroutine(GoodEnding());
     }
 
     private IEnumerator GoodEnding()
     {
-        yield return new WaitForSeconds(5.0f);
+        Debug.Log("HI");
+        yield return new WaitForSeconds(2.0f);
         FadeToBlack();
         yield return new WaitForSeconds(5.0f);
         _exitButton.SetActive(true);
@@ -40,6 +42,7 @@ public class EndScreenScript : MonoBehaviour
 
     private void FadeToBlack()
     {
+                Debug.Log("Animation Was called");
         _anim.Play("FadeToBlack");
     }
 

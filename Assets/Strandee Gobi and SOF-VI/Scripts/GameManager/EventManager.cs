@@ -37,6 +37,7 @@ public class EventManager : MonoBehaviour
             case "Good":
                 goodChoice?.Invoke();
                 togglePlayer?.Invoke();
+                Debug.Log("Good");
                 break;
             case "Bad":
                 badChoice?.Invoke();

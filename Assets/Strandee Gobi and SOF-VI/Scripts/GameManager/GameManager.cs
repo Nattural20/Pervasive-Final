@@ -42,7 +42,12 @@ namespace Hamish
             {
                 _playerMusic[i].volume = 0f;
                 _playerMusic[i].Play();
+                Debug.Log(_playerMusic[i].clip);
             }
+
+            _playerMusic[4].Stop();
+
+            _playerMusic[4].volume = 1.0f;
 
             _playerMusic[0].volume = _musicVolume;
         }
@@ -50,7 +55,7 @@ namespace Hamish
         // Update is called once per frame
         void Update()
         {
-            
+
         }
 
         public void hideStartScreen(GameObject canvas)
@@ -137,7 +142,7 @@ namespace Hamish
         }
 
         private IEnumerator FadeOutMusic(AudioSource track){
-            while(track.volume !<= 0.0f){
+            while(track.volume > 0.0f){
                 track.volume -= 0.0005f;
                 yield return null;
             }
@@ -150,30 +155,47 @@ namespace Hamish
         
         public static event Action theChoice;
 
+        [SerializeField] private AudioClip _shock;
+
+        [SerializeField] private AudioClip _goodMusic;
+        [SerializeField] private AudioClip _badMusic;
+
+
         private IEnumerator PauseMovement() //This is the end
         {
             EventManager.TogglePlayer();
 
-            yield return new WaitForSeconds(3.0f);
-            
+            yield return new WaitForSeconds(1.0f);
+
             for(int i = 0; i < _playerMusic.Length; i++){
                 StartCoroutine(FadeOutMusic(_playerMusic[i]));
             }
+            _playerMusic[4].volume = 1.0f;
+            _playerMusic[4].PlayOneShot(_shock);
+            yield return new WaitForSeconds(2.0f);
             theChoice?.Invoke();
 
             yield return new WaitForSeconds(6.0f);
             
             EventManager.TogglePlayer();
+            _playerMusic[4].Stop();
         }
 
         private void BadChoice()
         {
-            _playerMusic[6].Play();
+            if(!_playerMusic[4].isPlaying){
+                _playerMusic[4].clip = _badMusic;
+                _playerMusic[4].Play();
+            }
         }
 
         private void GoodChoice()
         {
-            _playerMusic[5].Play();
+            Debug.Log("PLAY FFS");
+            if(!_playerMusic[4].isPlaying){
+                _playerMusic[4].clip = _goodMusic;
+                _playerMusic[4].Play();
+            }
         }
         
         #endregion
