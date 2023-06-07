@@ -20,7 +20,7 @@ namespace Hamish
         // -------- Camera Positions ------------
         private Vector3 _default = new Vector3(0f, 0f, 10f);
         private Vector3 _startScreen = new Vector3(1f, 3f, -8f);
-        private Vector3 _cinematic = new Vector3(-5f, -20f, 30f);
+        private Vector3 _cinematic = new Vector3(-195f, -68.2f, -8f);
 
         private void Awake()
         {
