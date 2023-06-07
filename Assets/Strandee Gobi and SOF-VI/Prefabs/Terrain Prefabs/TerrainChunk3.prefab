@@ -30,7 +30,7 @@ Transform:
   m_Children:
   - {fileID: 8345855873419987082}
   m_Father: {fileID: 0}
-  m_RootOrder: -1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8345855873419987125
 GameObject:
@@ -43,7 +43,7 @@ GameObject:
   - component: {fileID: 8345855873419987082}
   - component: {fileID: 8345855873419987081}
   - component: {fileID: 8345855873419987080}
-  - component: {fileID: 8345855873419987083}
+  - component: {fileID: 1651717923145743558}
   m_Layer: 3
   m_Name: TerrainChunk3
   m_TagString: Untagged
@@ -117,8 +117,8 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!61 &8345855873419987083
-BoxCollider2D:
+--- !u!60 &1651717923145743558
+PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -149,7 +149,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.0019511068, y: -0.020249099}
+  m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -159,6 +159,21 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 0.063927, y: 0.047443174}
-  m_EdgeRadius: 0
+  m_Points:
+    m_Paths:
+    - - {x: 0.030578166, y: 0.0046897917}
+      - {x: 0.023077477, y: 0.0055547245}
+      - {x: 0.015331011, y: 0.005320506}
+      - {x: 0.009227723, y: 0.0065494687}
+      - {x: 0.004528004, y: 0.007859982}
+      - {x: -0.0063656922, y: 0.004906402}
+      - {x: -0.015297769, y: 0.0048430683}
+      - {x: -0.024817003, y: 0.005068941}
+      - {x: -0.03247989, y: 0.0038623482}
+      - {x: -0.038596064, y: -0.00060733967}
+      - {x: -0.031799007, y: -0.022987239}
+      - {x: -0.031489573, y: -0.043517318}
+      - {x: 0.030191164, y: -0.043517314}
+      - {x: 0.032544717, y: -0.00858882}
+      - {x: 0.033608716, y: 0.0021098033}
+  m_UseDelaunayMesh: 0
