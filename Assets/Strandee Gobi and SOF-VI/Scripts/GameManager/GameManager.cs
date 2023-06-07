@@ -17,6 +17,8 @@ namespace Hamish
         public static event Action triggerPan;
         public static event Action gameStart;
 
+        private IEnumerator momentOfAFracturedWorld;
+
         private void Awake()
         {
             if (Instance != null)
@@ -58,7 +60,8 @@ namespace Hamish
         #region Cinematic
         private void Cinematic()
         {
-            StartCoroutine(MomentOfAFracturedWorld());
+            momentOfAFracturedWorld = MomentOfAFracturedWorld();
+            StartCoroutine(momentOfAFracturedWorld);
         }
 
         private IEnumerator MomentOfAFracturedWorld()
@@ -80,7 +83,6 @@ namespace Hamish
                 _playerMusic[3].volume += 0.001f;
                 yield return null;
             }
-            Debug.Log("Moment is about to End");
 
             yield return new WaitForSeconds(10f);
 
@@ -93,12 +95,12 @@ namespace Hamish
             EventManager.TogglePlayer();
             EventManager.MomentHasEnded();
 
-            Debug.Log("Moment Has Ended");
         }
 
         private void BreakCinematic()
         {
-            StopCoroutine(MomentOfAFracturedWorld());
+            Debug.Log("Moment Has Ended");
+            StopCoroutine(momentOfAFracturedWorld);
             _playerMusic[2].volume = 0.0f;
         }
 
