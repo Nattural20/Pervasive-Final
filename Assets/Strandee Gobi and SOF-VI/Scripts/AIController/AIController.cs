@@ -13,6 +13,7 @@ namespace Hamish.AI{
         [SerializeField] private ParticleSystem[] _particleEmotions;
         private ParticleSystem _particleSystem;
         [SerializeField] public Sprite[] _sprite;
+        public SpriteRenderer spriteR;
         private Animation _anim;
 
         private void Awake()
@@ -53,15 +54,19 @@ namespace Hamish.AI{
             switch (emote){
                 case NeutralEmotion:
                     _particleSystem = _particleEmotions[0];
+                    spriteR.sprite = _sprite[0];
                     break;
                 case UncertainEmotion:
                     _particleSystem = _particleEmotions[1];
+                    spriteR.sprite = _sprite[1];
                     break;
                 case MarvelEmotion:
                     _particleSystem = _particleEmotions[2];
+                    spriteR.sprite = _sprite[2];
                     break;
                 case DeadEmotion:
                     _particleSystem = _particleEmotions[3];
+                    spriteR.sprite = _sprite[3];
                     break;
             }
             _particleSystem.Play();
