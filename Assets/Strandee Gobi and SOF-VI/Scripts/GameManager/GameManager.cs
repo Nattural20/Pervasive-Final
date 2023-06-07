@@ -28,9 +28,13 @@ namespace Hamish
             EventManager.momentHasEnded += EndCinematic;
             EventManager.leftScenic += BreakCinematic;
             EventManager.sofviHasDied += StopMusicPlayer;
+            EventManager.goodChoice += GoodChoice;
+            EventManager.goodChoice += BadChoice;
 
             _playerMusic = _player.GetComponentsInChildren<AudioSource>();
         }
+
+
 
         private void Start()
         {
@@ -160,6 +164,16 @@ namespace Hamish
             yield return new WaitForSeconds(6.0f);
             
             EventManager.TogglePlayer();
+        }
+
+        private void BadChoice()
+        {
+            _playerMusic[6].Play();
+        }
+
+        private void GoodChoice()
+        {
+            _playerMusic[5].Play();
         }
         
         #endregion

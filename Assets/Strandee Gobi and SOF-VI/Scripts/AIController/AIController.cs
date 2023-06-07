@@ -10,7 +10,8 @@ namespace Hamish.AI{
         private Vector3 _velocity = Vector3.zero;
         public float dist { get; private set; }
 
-        [SerializeField] private ParticleSystem[] _particleSystem;
+        [SerializeField] private ParticleSystem[] _particleEmotions;
+        private ParticleSystem _particleSystem;
         [SerializeField] public Sprite[] _sprite;
         private Animation _anim;
 
@@ -23,7 +24,10 @@ namespace Hamish.AI{
         void Update()
         {
             dist = Vector3.Distance(_player.transform.position, transform.position);
+            _particleSystem = GetComponentInChildren<ParticleSystem>();
             RunStateMachine();
+            ChangeEmotion(currentEmotion);
+            Debug.Log(_particleSystem);
         }
 
         public void FollowPlayer(float f, float _smoothTime)
@@ -40,12 +44,27 @@ namespace Hamish.AI{
                 transform.position = Vector3.SmoothDamp(transform.position, target, ref _velocity, _smoothTime);
             }
         }
-        /*
-        public void PlayEyeAnimation(string animation)
+        
+        public void ChangeEmotion(Emotion emote)
         {
-            _anim.Play(animation);
+            switch (emote){
+                case NeutralEmotion:
+                    _particleSystem.Stop();
+                    _particleSystem = _particleEmotions[0];
+                    _particleSystem.Play();
+                    break;
+                case UncertainEmotion:
+                    _particleSystem.Stop();
+                    _particleSystem = _particleEmotions[1];
+                    _particleSystem.Play();
+                    break;
+                case MarvelEmotion:
+                    break;
+                case DeadEmotion:
+                    break;
+            }
         }
-        */
+        
         private void OnTriggerEnter(Collider other)
         {
             switch (other.tag)
@@ -58,7 +77,7 @@ namespace Hamish.AI{
                     break;
             }
         }
-
+/*
         private void OnTriggerExit(Collider other)
         {
             if(other.tag == "Dead"){
@@ -72,5 +91,6 @@ namespace Hamish.AI{
                 SetState(new NeutralEmotion(this));
             }
         }
+        */
     }
 }

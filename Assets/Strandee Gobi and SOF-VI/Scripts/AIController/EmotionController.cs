@@ -8,7 +8,7 @@ namespace Hamish.AI
     {
         protected Emotion _emotion;
 
-        private Emotion currentEmotion;
+        public Emotion currentEmotion {get; private set;}
 
         public void StartState(Emotion emotion)
         {
